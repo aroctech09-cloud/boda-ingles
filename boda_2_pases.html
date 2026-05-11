@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Israel & Alejandra - Nuestra Boda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dorado: #b08d21;
+            --dorado-brillante: #d4af37;
+            --beige-sobre: #f4f1ea;
+            --crema-fondo: #fdfaf5;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #e8e4da;
+            overflow-x: hidden;
+        }
+
+        /* --- ANIMACIONES DE APARICIÓN (REVEAL) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- ESTILOS DEL SOBRE REALISTA --- */
+        #sobre-capa {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--crema-fondo);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s;
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            width: 320px;
+            height: 220px;
+            background-color: var(--beige-sobre);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .envelope-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 0; z-index: 2;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-top: 120px solid #e2ddd3;
+            transform-origin: top;
+            transition: transform 0.6s ease;
+        }
+
+        .envelope-wrapper::after {
+            content: "";
+            position: absolute;
+            bottom: 0; z-index: 1;
+            width: 0; height: 0;
+            border-left: 160px solid #eeebe2;
+            border-right: 160px solid #eeebe2;
+            border-bottom: 110px solid #eeebe2;
+            border-top: 110px solid transparent;
+        }
+
+        .wax-seal {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #d4af37 0%, #b08d21 100%);
+            border-radius: 50%;
+            top: 40%;
+            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3), inset 0 0 10px rgba(255,255,255,0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Great Vibes', cursive;
+            color: rgba(255,255,255,0.8);
+            font-size: 24px;
+            border: 2px solid #a38118;
+        }
+
+        .instruccion-sello {
+            margin-top: 40px;
+            letter-spacing: 3px;
+            font-size: 12px;
+            color: var(--dorado);
+            text-transform: uppercase;
+        }
+
+        /* --- CONTENIDO DE LA INVITACIÓN --- */
+        #invitacion-contenido {
+            display: none;
+            width: 100%;
+            background-color: var(--crema-fondo);
+            background-image: url('https://png.pngtree.com/background/20250106/original/pngtree-elegant-floral-frame-with-a-gold-clock-and-white-flowers-perfect-picture-image_16000033.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .main-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 254, 250, 0.95);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin: 10px 0; }
+        .tagline { letter-spacing: 5px; font-weight: 300; font-size: 13px; color: #888; }
+        
+        .foto-marco {
+            width: 100%;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 25px 0;
+            transform: rotate(0deg);
+            transition: transform 0.5s;
+        }
+        .foto-marco:nth-child(even) { transform: rotate(1.5deg); }
+        .foto-marco:nth-child(odd) { transform: rotate(-1.5deg); }
+        .foto-marco img { width: 100%; height: auto; display: block; border-radius: 2px; }
+
+        .info-bloque {
+            margin: 60px 0;
+            padding: 0 10px;
+        }
+        
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--dorado);
+            margin: 20px auto;
+        }
+
+        h3 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 400; 
+            letter-spacing: 3px; 
+            color: var(--dorado);
+            text-transform: uppercase;
+            font-size: 15px;
+        }
+
+        .btn-dorado {
+            display: inline-block;
+            background: var(--dorado);
+            color: white;
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+            margin-top: 15px;
+        }
+
+        .reloj {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .reloj-item span { display: block; font-size: 22px; font-weight: 600; color: var(--dorado); }
+        .reloj-item small { font-size: 9px; color: #999; text-transform: uppercase; }
+
+        .pases-box {
+            background: #fdfaf1;
+            border: 1px solid #eee3c8;
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 4px;
+        }
+        #n-pases { font-size: 40px; font-weight: 300; color: var(--dorado); }
+
+        .btn-musica {
+            position: fixed;
+            bottom: 20px; right: 20px;
+            background: white;
+            border: 1px solid var(--dorado);
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .abrir-sobre {
+            transform: translateY(-100%) scale(0.8);
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+  <audio id="musicaBoda" loop>
+    <source src="Alex Warren - Ordinary (Lyrics).mp3" type="audio/mpeg">
+</audio>
+
+    <div id="sobre-capa">
+        <div class="envelope-wrapper" onclick="abrirInvitacion()">
+            <div class="wax-seal">IA</div>
+            <div style="position: absolute; bottom: 20px; font-size: 10px; color: #bda885; letter-spacing: 2px; z-index: 5;">TOCA EL SELLO</div>
+        </div>
+        <p class="instruccion-sello">Israel & Alejandra</p>
+    </div>
+
+    <div id="invitacion-contenido">
+        <button id="btnControlMusica" class="btn-musica" onclick="toggleMusica()">🎵</button>
+
+        <div class="main-container">
+            <header class="reveal">
+                <p class="tagline">NUESTRA BODA</p>
+                <h1>Israel & Alejandra</h1>
+                <div class="divider"></div>
+                <p style="font-style: italic; color: #777;">"Nos emociona profundamente compartir con ustedes uno de los momentos más importantes de nuestras vidas: nuestra boda. <br> Deseamos que este día esté lleno de alegría, sonrisas y, sobre todo, mucho amor; celebrándolo junto a las personas que han formado parte de nuestra historia y de nuestro camino."</p>
+            </header>
+
+            <div class="foto-marco reveal">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000" alt="Foto 1">
+            </div>
+
+            <p>Con mucho cariño, les informamos que los pases son exclusivamente para su familia y seres queridos incluidos en la invitación; por ello, no será posible el acceso a personas que no estén contempladas. De esta manera, podremos compartir un momento seguro, armonioso y verdaderamente especial.</p>
+
+            <section class="info-bloque reveal">
+                <h3>🗓️ CUÁNDO</h3>
+                <p>Sábado 11 de Noviembre, 2026</p>
+                <div class="reloj" id="reloj"></div>
+            </section>
+
+            <div class="foto-marco reveal">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000" alt="Foto 2">
+            </div>
+
+            <section class="info-bloque reveal">
+                <h3>📍 DÓNDE</h3>
+                <p><strong>Lienzo Charro "El Arroyo"</strong></p>
+                <p>Saltillo, Coahuila</p>
+                <a href="https://www.google.com/maps?vet=10CAAQoqAOahcKEwiA4Za7l7CUAxUAAAAAHQAAAAAQFA..i&pvq=Cg0vZy8xMWRfN3hmZ3B0IhMKDWxpZW56byBjaGFycm8QAhgD&lqi=Cg1saWVuem8gY2hhcnJvSLn1mv78rICACFoXEAAQARgAGAEiDWxpZW56byBjaGFycm-SAQtldmVudF92ZW51ZZoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VOYVgwbzNSbWxuUlJBQvoBBAgAEDg&fvr=1&cs=0&um=1&ie=UTF-8&fb=1&gl=mx&sa=X&geocode=KXfJRasybYiGMTjCoQ5ywx7t&daddr=Nazario+Ortiz+Garza+s/n,+Rancho+de+Pe%C3%B1a,+25210+Saltillo,+Coah." target="_blank" class="btn-dorado">VER UBICACIÓN</a>
+            </section>
+
+            <div class="foto-marco reveal">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000" alt="Foto 3">
+            </div>
+
+            <section class="info-bloque reveal">
+                <h3>🤠 CÓDIGO DE VESTIMENTA</h3>
+                <p><strong>Etiqueta:</strong> Vaquero de Gala</p>
+                <p><small>Color blanco exclusivo para la novia.</small></p>
+            </section>
+
+            <div class="foto-marco reveal">
+                <img src="https://www.palaciodeaviles.com/wp-content/uploads/2020/01/codigo-vestimenta-boda.jpg" alt="Foto 3">
+            </div>
+
+            <section class="info-bloque reveal">
+                <h3> 📋 PROTOCOLO DE BEBIDAS</h3>
+                <p>Deseamos que disfruten al máximo de nuestra celebración. Por disposición del lugar y logística del evento, se permitirá el ingreso de un máximo de un six-pack por invitacion. Agradecemos su comprensión al evitar el uso de envases de vidrio, esto con el fin de garantizar la seguridad de todos nuestros invitados en el recinto</p>
+            </section>
+
+            <div class="foto-marco reveal">
+                <img src=https://us.123rf.com/450wm/davit85/davit851907/davit85190704090/127980166-manos-sosteniendo-vasos-y-brindando-feliz-momento-festivo.jpg?ver=6" alt="Foto 3">
+            </div>
+
+            <section class="info-bloque reveal">
+                <h3> 🎁 MESA DE REGALOS</h3>
+                <p>Su presencia es el mejor regalo que podemos recibir. Si desean tener un detalle con nosotros, hemos elegido la tradicional lluvia de sobres, que recibiremos con el corazón lleno de gratitud</p>
+            </section>
+
+            <div class="foto-marco reveal">
+                <img src="https://ahorrardinero.com.mx/wp-content/uploads/regalos-boda-invitados.jpg" alt="Foto 3">
+            </div>
+
+            
+
+            <section class="pases-box reveal">
+    <h3>🎟️ PASES RESERVADOS</h3>
+    <p>Hola <strong id="nombre-invitado">Invitado</strong>, reservamos para ti:</p>
+    <div id="n-pases">0</div>
+    <p><small>LUGARES</small></p>
+    <div style="margin-top: 20px;">
+        <img id="codigo-qr" src="" alt="QR" style="width: 100px; opacity: 0.7;">
+    </div>
+    <p>Les pedimos atentamente confirmar su asistencia a más tardar el 01/04/2026.</p>
+</section>
+
+            <footer class="reveal" style="padding-bottom: 40px;">
+                <a id="btnWhatsapp" href="#" class="btn-dorado" style="background-color: #25d366; border: none;">CONFIRMAR ASISTENCIA</a>
+                <p style="margin-top: 40px; font-size: 10px; color: #bbb; letter-spacing: 2px;">I & A · 2026</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Función para activar animaciones al hacer scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        function abrirInvitacion() {
+            document.getElementById("musicaBoda").play().catch(e => {});
+            document.getElementById("sobre-capa").classList.add("abrir-sobre");
+            
+            setTimeout(() => {
+                document.getElementById("invitacion-contenido").style.display = "block";
+                window.addEventListener("scroll", reveal);
+                reveal(); // Ejecutar una vez al abrir
+            }, 600);
+        }
+
+        function toggleMusica() {
+            const musica = document.getElementById("musicaBoda");
+            const btn = document.getElementById("btnControlMusica");
+            if (musica.paused) {
+                musica.play();
+                btn.innerText = "🎵";
+            } else {
+                musica.pause();
+                btn.innerText = "🔇";
+            }
+        }
+
+        // Lógica de URL
+        const params = new URLSearchParams(window.location.search);
+        const nombre = params.get('id') || "Invitado Especial";
+        const pases = params.get('pases') || "2";
+
+        document.getElementById('nombre-invitado').innerText = nombre;
+        document.getElementById('n-pases').innerText = pases;
+        document.getElementById('codigo-qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=BodaIA-${nombre}`;
+
+        // Link WhatsApp
+        const tel = "8445545604"; 
+        const msj = encodeURIComponent(`¡Hola! Confirmo mi asistencia al evento. Pases: ${pases}.`);
+        document.getElementById('btnWhatsapp').href = `https://wa.me/${tel}?text=${msj}`;
+
+        // Contador
+        const fechaBoda = new Date("November 11, 2026 20:00:00").getTime();
+        setInterval(() => {
+            const ahora = new Date().getTime();
+            const dif = fechaBoda - ahora;
+            const d = Math.floor(dif / (1000 * 60 * 60 * 24));
+            const h = Math.floor((dif % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((dif % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((dif % (1000 * 60)) / 1000);
+            
+            document.getElementById("reloj").innerHTML = `
+                <div class="reloj-item"><span>${d}</span><small>Días</small></div>
+                <div class="reloj-item"><span>${h}</span><small>Hrs</small></div>
+                <div class="reloj-item"><span>${m}</span><small>Min</small></div>
+                <div class="reloj-item"><span>${s}</span><small>Seg</small></div>
+            `;
+        }, 1000);
+    </script>
+</body>
+</html>
