@@ -180,23 +180,25 @@
             margin-top: 15px;
         }
 
+        /* --- ESTILOS DEL TIMER (MESES, DÍAS, HRS, MIN, SEG) --- */
         .reloj {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
             margin: 30px 0;
         }
-        .reloj-item span { display: block; font-size: 22px; font-weight: 600; color: var(--dorado); }
-        .reloj-item small { font-size: 9px; color: #999; text-transform: uppercase; }
-
-        .pases-box {
-            background: #fdfaf1;
-            border: 1px solid #eee3c8;
-            padding: 30px;
-            margin: 40px 0;
-            border-radius: 4px;
+        .reloj-item {
+            background: #fcf9f2;
+            border: 1px solid #e3d3b1;
+            padding: 10px 8px;
+            border-radius: 8px;
+            min-width: 60px;
+            flex: 1 1 50px;
+            max-width: 80px;
         }
-        #n-pases { font-size: 40px; font-weight: 300; color: var(--dorado); }
+        .reloj-item span { display: block; font-size: 20px; font-weight: 600; color: var(--dorado); }
+        .reloj-item small { font-size: 8px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
 
         .btn-musica {
             position: fixed;
@@ -221,13 +223,13 @@
 </head>
 <body>
 
-  <audio id="musicaBoda" loop>
-    <source src="Alex Warren - Ordinary (Lyrics).mp3" type="audio/mpeg">
-</audio>
+    <audio id="musicaBoda" loop>
+        <source src="Alex Warren - Ordinary (Lyrics).mp3" type="audio/mpeg">
+    </audio>
 
     <div id="sobre-capa">
         <div class="envelope-wrapper" onclick="abrirInvitacion()">
-            <div class="wax-seal">IA</div>
+            <div class="wax-seal">CB</div>
             <div style="position: absolute; bottom: 20px; font-size: 10px; color: #bda885; letter-spacing: 2px; z-index: 5;">TOCA EL SELLO</div>
         </div>
         <p class="instruccion-sello">Christian & Brittany</p>
@@ -248,11 +250,15 @@
                 <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000" alt="Foto 1">
             </div>
 
-            <p>Con mucho cariño, les informamos que los pases son exclusivamente para su familia y seres queridos incluidos en la invitación; por ello, no será posible el acceso a personas que no estén contempladas. De esta manera, podremos compartir un momento seguro, armonioso y verdaderamente especial.</p>
+            <p class="reveal">Con mucho cariño, les informamos que los pases son exclusivamente para su familia y seres queridos incluidos en la invitación; por ello, no será posible el acceso a personas que no estén contempladas.</p>
 
+            <!-- SECCIÓN CUÁNDO CON FECHA, HORARIO Y TIMER -->
             <section class="info-bloque reveal">
                 <h3>🗓️ CUÁNDO</h3>
-                <p>Sábado 27 de Noviembre, 2026</p>
+                <p><strong>Sábado 27 de Noviembre, 2026</strong></p>
+                <p style="margin-top: 5px; color: #666; font-size: 14px;"><strong>Horario:</strong> 6:00 p.m. - 12:00 a.m.</p>
+                
+                <!-- RELOJ REPRESENATA MESES, DÍAS, HORAS, MINUTOS Y SEGUNDOS -->
                 <div class="reloj" id="reloj"></div>
             </section>
 
@@ -278,30 +284,30 @@
             </section>
 
             <div class="foto-marco reveal">
-                <img src="https://www.palaciodeaviles.com/wp-content/uploads/2020/01/codigo-vestimenta-boda.jpg" alt="Foto 3">
+                <img src="https://www.palaciodeaviles.com/wp-content/uploads/2020/01/codigo-vestimenta-boda.jpg" alt="Foto 4">
             </div>
 
             <section class="info-bloque reveal">
                 <h3> 📋 PROTOCOLO DE BEBIDAS</h3>
-                <p>Deseamos que disfruten al máximo de nuestra celebración. Por disposición del lugar y logística del evento, se permitirá el ingreso de un máximo de un six-pack por invitacion. Agradecemos su comprensión al evitar el uso de envases de vidrio, esto con el fin de garantizar la seguridad de todos nuestros invitados en el recinto</p>
+                <p>Deseamos que disfruten al máximo de nuestra celebración. Se permitirá el ingreso de un máximo de un six-pack por invitación (no se permiten envases de vidrio).</p>
             </section>
 
             <div class="foto-marco reveal">
-                <img src=https://us.123rf.com/450wm/davit85/davit851907/davit85190704090/127980166-manos-sosteniendo-vasos-y-brindando-feliz-momento-festivo.jpg?ver=6" alt="Foto 3">
+                <img src="https://us.123rf.com/450wm/davit85/davit851907/davit85190704090/127980166-manos-sosteniendo-vasos-y-brindando-feliz-momento-festivo.jpg?ver=6" alt="Foto 5">
             </div>
 
             <section class="info-bloque reveal">
                 <h3> 🎁 MESA DE REGALOS</h3>
-                <p>Su presencia es el mejor regalo que podemos recibir. Si desean tener un detalle con nosotros, hemos elegido la tradicional lluvia de sobres, que recibiremos con el corazón lleno de gratitud</p>
+                <p>Su presencia es el mejor regalo que podemos recibir. Si desean tener un detalle con nosotros, hemos elegido la tradicional lluvia de sobres.</p>
             </section>
 
             <div class="foto-marco reveal">
-                <img src="https://ahorrardinero.com.mx/wp-content/uploads/regalos-boda-invitados.jpg" alt="Foto 3">
+                <img src="https://ahorrardinero.com.mx/wp-content/uploads/regalos-boda-invitados.jpg" alt="Foto 6">
             </div>
-
+        </div>
+    </div>
 
     <script>
-        // Función para activar animaciones al hacer scroll
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -321,7 +327,7 @@
             setTimeout(() => {
                 document.getElementById("invitacion-contenido").style.display = "block";
                 window.addEventListener("scroll", reveal);
-                reveal(); // Ejecutar una vez al abrir
+                reveal();
             }, 600);
         }
 
@@ -333,41 +339,46 @@
                 btn.innerText = "🎵";
             } else {
                 musica.pause();
-                btn.innerText = "🔇";
+                btn.innerText = "0";
             }
         }
 
-        // Lógica de URL
-        const params = new URLSearchParams(window.location.search);
-        const nombre = params.get('id') || "Invitado Especial";
-        const pases = params.get('pases') || "2";
-
-        document.getElementById('nombre-invitado').innerText = nombre;
-        document.getElementById('n-pases').innerText = pases;
-        document.getElementById('codigo-qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=BodaIA-${nombre}`;
-
-        // Link WhatsApp
-        const tel = "8445545604"; 
-        const msj = encodeURIComponent(`¡Hola! Confirmo mi asistencia al evento. Pases: ${pases}.`);
-        document.getElementById('btnWhatsapp').href = `https://wa.me/${tel}?text=${msj}`;
-
-        // Contador
-        const fechaBoda = new Date("November 27, 2026 18:00:00").getTime();
-        setInterval(() => {
+        // TIMER CON MESES, DÍAS, HORAS, MINUTOS Y SEGUNDOS
+        function actualizarTimer() {
+            const fechaBoda = new Date("November 27, 2026 18:00:00").getTime();
             const ahora = new Date().getTime();
             const dif = fechaBoda - ahora;
-            const d = Math.floor(dif / (1000 * 60 * 60 * 24));
-            const h = Math.floor((dif % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((dif % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((dif % (1000 * 60)) / 1000);
-            
-            document.getElementById("reloj").innerHTML = `
-                <div class="reloj-item"><span>${d}</span><small>Días</small></div>
-                <div class="reloj-item"><span>${h}</span><small>Hrs</small></div>
-                <div class="reloj-item"><span>${m}</span><small>Min</small></div>
-                <div class="reloj-item"><span>${s}</span><small>Seg</small></div>
-            `;
-        }, 1000);
+
+            if (dif > 0) {
+                const msPorSegundo = 1000;
+                const msPorMinuto = msPorSegundo * 60;
+                const msPorHora = msPorMinuto * 60;
+                const msPorDia = msPorHora * 24;
+                const msPorMes = msPorDia * 30.4375; // Promedio de días por mes en un año
+
+                const meses = Math.floor(dif / msPorMes);
+                const dias = Math.floor((dif % msPorMes) / msPorDia);
+                const horas = Math.floor((dif % msPorDia) / msPorHora);
+                const minutos = Math.floor((dif % msPorHora) / msPorMinuto);
+                const segundos = Math.floor((dif % msPorMinuto) / msPorSegundo);
+
+                const relojElemento = document.getElementById("reloj");
+                if (relojElemento) {
+                    relojElemento.innerHTML = `
+                        <div class="reloj-item"><span>${meses}</span><small>Meses</small></div>
+                        <div class="reloj-item"><span>${dias}</span><small>Días</small></div>
+                        <div class="reloj-item"><span>${horas}</span><small>Hrs</small></div>
+                        <div class="reloj-item"><span>${minutos}</span><small>Min</small></div>
+                        <div class="reloj-item"><span>${segundos}</span><small>Seg</small></div>
+                    `;
+                }
+            } else {
+                document.getElementById("reloj").innerHTML = "<p style='color: var(--dorado); font-weight: 600;'>¡Llegó el gran día!</p>";
+            }
+        }
+
+        actualizarTimer();
+        setInterval(actualizarTimer, 1000);
     </script>
 </body>
 </html>
