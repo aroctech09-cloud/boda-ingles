@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://thumbs.dreamstime.com/b/sobres-de-invitaci%C3%B3n-la-boda-con-sello-cera-y-ramo-flores-sobre-mesa-m%C3%A1rmol-papel-elegante-bodas-blancos-grises-adornados-un-e-381513653.jpg" type="image/png">
-    <title>Christian & Brittany - Nuestra Boda</title>
+    <title>Christian & Brittany - Our Wedding</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -24,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* --- ANIMACIONES DE APARICIÓN (REVEAL) --- */
+        /* --- REVEAL ANIMATIONS --- */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -36,7 +36,7 @@
             transform: translateY(0);
         }
 
-        /* --- ESTILOS DEL SOBRE REALISTA --- */
+        /* --- REALISTIC ENVELOPE STYLES --- */
         #sobre-capa {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -109,7 +109,7 @@
             text-transform: uppercase;
         }
 
-        /* --- CONTENIDO DE LA INVITACIÓN --- */
+        /* --- INVITATION CONTENT --- */
         #invitacion-contenido {
             display: none;
             width: 100%;
@@ -180,7 +180,7 @@
             margin-top: 15px;
         }
 
-        /* --- ESTILOS DEL TIMER (MESES, DÍAS, HRS, MIN, SEG) --- */
+        /* --- TIMER STYLES (MONTHS, DAYS, HRS, MIN, SEC) --- */
         .reloj {
             display: flex;
             justify-content: center;
@@ -230,7 +230,7 @@
     <div id="sobre-capa">
         <div class="envelope-wrapper" onclick="abrirInvitacion()">
             <div class="wax-seal">CB</div>
-            <div style="position: absolute; bottom: 20px; font-size: 10px; color: #bda885; letter-spacing: 2px; z-index: 5;">TOCA EL SELLO</div>
+            <div style="position: absolute; bottom: 20px; font-size: 10px; color: #bda885; letter-spacing: 2px; z-index: 5;">TAP THE SEAL</div>
         </div>
         <p class="instruccion-sello">Christian & Brittany</p>
     </div>
@@ -240,69 +240,69 @@
 
         <div class="main-container">
             <header class="reveal">
-                <p class="tagline">NUESTRA BODA</p>
+                <p class="tagline">OUR WEDDING</p>
                 <h1>Christian & Brittany</h1>
                 <div class="divider"></div>
-                <p style="font-style: italic; color: #777;">"Nos emociona profundamente compartir con ustedes uno de los momentos más importantes de nuestras vidas: nuestra boda. <br> Deseamos que este día esté lleno de alegría, sonrisas y, sobre todo, mucho amor; celebrándolo junto a las personas que han formado parte de nuestra historia y de nuestro camino."</p>
+                <p style="font-style: italic; color: #777;">"We are deeply excited to share with you one of the most important moments of our lives: our wedding. <br> We hope this day is filled with joy, laughter, and above all, lots of love; celebrating it alongside the people who have been a part of our history and our journey."</p>
             </header>
 
             <div class="foto-marco reveal">
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000" alt="Foto 1">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000" alt="Photo 1">
             </div>
 
-            <p class="reveal">Con mucho cariño, les informamos que los pases son exclusivamente para su familia y seres queridos incluidos en la invitación; por ello, no será posible el acceso a personas que no estén contempladas.</p>
+            <p class="reveal">With love, please note that invitations are exclusively for family and loved ones included in the invitation; therefore, access will not be possible for guests not listed.</p>
 
-            <!-- SECCIÓN CUÁNDO CON FECHA, HORARIO Y TIMER -->
+            <!-- WHEN SECTION WITH DATE, TIME, AND TIMER -->
             <section class="info-bloque reveal">
-                <h3>🗓️ CUÁNDO</h3>
-                <p><strong>Sábado 27 de Noviembre, 2026</strong></p>
-                <p style="margin-top: 5px; color: #666; font-size: 14px;"><strong>Horario:</strong> 6:00 p.m. - 12:00 a.m.</p>
+                <h3>🗓️ WHEN</h3>
+                <p><strong>Saturday, November 27, 2026</strong></p>
+                <p style="margin-top: 5px; color: #666; font-size: 14px;"><strong>Time:</strong> 6:00 p.m. - 12:00 a.m.</p>
                 
-                <!-- RELOJ REPRESENATA MESES, DÍAS, HORAS, MINUTOS Y SEGUNDOS -->
+                <!-- TIMER DISPLAYING MONTHS, DAYS, HOURS, MINUTES, AND SECONDS -->
                 <div class="reloj" id="reloj"></div>
             </section>
 
             <div class="foto-marco reveal">
-                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000" alt="Foto 2">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000" alt="Photo 2">
             </div>
 
             <section class="info-bloque reveal">
-                <h3>📍 DÓNDE</h3>
+                <h3>📍 WHERE</h3>
                 <p><strong>Blvd. Jesús Valdez Sánchez 1487</strong></p>
                 <p>Saltillo, Coahuila</p>
-                <a href="https://www.google.com/maps/place/Blvd.+Jes%C3%BAs+Valdez+S%C3%A1nchez+1487,+Sin+Nombre+de+Col+16,+25280+Saltillo,+Coah./@25.4346499,-100.988915,15z/data=!4m6!3m5!1s0x86880d54f23ededb:0x4e2f963677d326f4!8m2!3d25.435172!4d-100.9784748!16s%2Fg%2F11c2jxkq3m?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-dorado">VER UBICACIÓN</a>
+                <a href="https://www.google.com/maps/place/Blvd.+Jes%C3%BAs+Valdez+S%C3%A1nchez+1487,+Sin+Nombre+de+Col+16,+25280+Saltillo,+Coah./@25.4346499,-100.988915,15z/data=!4m6!3m5!1s0x86880d54f23ededb:0x4e2f963677d326f4!8m2!3d25.435172!4d-100.9784748!16s%2Fg%2F11c2jxkq3m?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-dorado">GET DIRECTIONS</a>
             </section>
 
             <div class="foto-marco reveal">
-                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000" alt="Foto 3">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000" alt="Photo 3">
             </div>
 
             <section class="info-bloque reveal">
-                <h3>🤠 CÓDIGO DE VESTIMENTA</h3>
-                <p><strong>Etiqueta:</strong> Formal de Gala</p>
-                <p><small>Color blanco exclusivo para la novia.</small></p>
+                <h3>🤠 DRESS CODE</h3>
+                <p><strong>Attire:</strong> Formal</p>
+                <p><small>White color is exclusively reserved for the bride.</small></p>
             </section>
 
             <div class="foto-marco reveal">
-                <img src="https://www.palaciodeaviles.com/wp-content/uploads/2020/01/codigo-vestimenta-boda.jpg" alt="Foto 4">
+                <img src="https://www.palaciodeaviles.com/wp-content/uploads/2020/01/codigo-vestimenta-boda.jpg" alt="Photo 4">
             </div>
 
             <section class="info-bloque reveal">
-                <h3> 📋 PROTOCOLO DE BEBIDAS</h3>
-                <p>Deseamos que disfruten al máximo de nuestra celebración. Se permitirá el ingreso de un máximo de un six-pack por invitación (no se permiten envases de vidrio).</p>
+                <h3> 📋 BEVERAGE POLICY</h3>
+                <p>We want you to enjoy our celebration to the fullest. A maximum of one six-pack is allowed per invitation (glass containers are not permitted).</p>
             </section>
 
             <div class="foto-marco reveal">
-                <img src="https://us.123rf.com/450wm/davit85/davit851907/davit85190704090/127980166-manos-sosteniendo-vasos-y-brindando-feliz-momento-festivo.jpg?ver=6" alt="Foto 5">
+                <img src="https://us.123rf.com/450wm/davit85/davit851907/davit85190704090/127980166-manos-sosteniendo-vasos-y-brindando-feliz-momento-festivo.jpg?ver=6" alt="Photo 5">
             </div>
 
             <section class="info-bloque reveal">
-                <h3> 🎁 MESA DE REGALOS</h3>
-                <p>Su presencia es el mejor regalo que podemos recibir. Si desean tener un detalle con nosotros, hemos elegido la tradicional lluvia de sobres.</p>
+                <h3> 🎁 GIFT REGISTRY</h3>
+                <p>Your presence is the best gift we could receive. If you wish to bless us with a gift, we have chosen a traditional envelope well.</p>
             </section>
 
             <div class="foto-marco reveal">
-                <img src="https://ahorrardinero.com.mx/wp-content/uploads/regalos-boda-invitados.jpg" alt="Foto 6">
+                <img src="https://ahorrardinero.com.mx/wp-content/uploads/regalos-boda-invitados.jpg" alt="Photo 6">
             </div>
         </div>
     </div>
@@ -343,7 +343,7 @@
             }
         }
 
-        // TIMER CON MESES, DÍAS, HORAS, MINUTOS Y SEGUNDOS
+        // TIMER WITH MONTHS, DAYS, HOURS, MINUTES, AND SECONDS
         function actualizarTimer() {
             const fechaBoda = new Date("November 27, 2026 18:00:00").getTime();
             const ahora = new Date().getTime();
@@ -354,7 +354,7 @@
                 const msPorMinuto = msPorSegundo * 60;
                 const msPorHora = msPorMinuto * 60;
                 const msPorDia = msPorHora * 24;
-                const msPorMes = msPorDia * 30.4375; // Promedio de días por mes en un año
+                const msPorMes = msPorDia * 30.4375; // Average days per month in a year
 
                 const meses = Math.floor(dif / msPorMes);
                 const dias = Math.floor((dif % msPorMes) / msPorDia);
@@ -365,15 +365,15 @@
                 const relojElemento = document.getElementById("reloj");
                 if (relojElemento) {
                     relojElemento.innerHTML = `
-                        <div class="reloj-item"><span>${meses}</span><small>Meses</small></div>
-                        <div class="reloj-item"><span>${dias}</span><small>Días</small></div>
+                        <div class="reloj-item"><span>${meses}</span><small>Months</small></div>
+                        <div class="reloj-item"><span>${dias}</span><small>Days</small></div>
                         <div class="reloj-item"><span>${horas}</span><small>Hrs</small></div>
                         <div class="reloj-item"><span>${minutos}</span><small>Min</small></div>
-                        <div class="reloj-item"><span>${segundos}</span><small>Seg</small></div>
+                        <div class="reloj-item"><span>${segundos}</span><small>Sec</small></div>
                     `;
                 }
             } else {
-                document.getElementById("reloj").innerHTML = "<p style='color: var(--dorado); font-weight: 600;'>¡Llegó el gran día!</p>";
+                document.getElementById("reloj").innerHTML = "<p style='color: var(--dorado); font-weight: 600;'>The big day has arrived!</p>";
             }
         }
 
